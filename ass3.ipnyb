@@ -1,0 +1,174 @@
+#prime number from list using loops........
+numbers = [2, 5, 8, 11, 15, 17, 20]
+
+print("Prime numbers are:")
+
+for num in numbers:
+    if num > 1:
+        flag = True
+
+        for i in range(2, num):
+            if num % i == 0:
+                flag = False
+                break
+
+        if flag:
+            print(num) 
+
+
+#multiplication table >>>>>>>>
+
+for i in range(1, 11):
+    for j in range(1, 11):
+        print(i*j, end="\t")
+    print()
+
+
+
+#function>>>>>>
+
+def check_numbers(numbers):
+    even_count = 0
+    odd_sum = 0
+
+    for i in numbers:
+        if i % 2 == 0:
+            even_count += 1
+        else:
+            odd_sum += i
+
+    return even_count, odd_sum
+
+
+nums = [1, 2, 3, 4, 5, 6]
+
+even, odd = check_numbers(nums)
+
+print("Even numbers count:", even)
+print("Sum of odd numbers:", odd)
+
+
+#simple interest>>>>>.
+
+def simple_interest(p, r=5, t=2):
+    si = (p * r * t) / 100
+    return si
+
+# positional arguments
+print("Simple Interest:", simple_interest(5000, 6, 3))
+
+# keyword arguments
+print("Simple Interest:", simple_interest(p=5000, t=4))
+
+
+
+#student class.......
+
+
+class Student:
+    def _init_(self, name, marks):
+        Anjali = name
+        80 = marks
+
+    def grade(self):
+        if self.marks >= 90:
+            return "A"
+        elif self.marks >= 75:
+            return "B"
+        elif self.marks >= 50:
+            return "C"
+        else:
+            return "Fail"
+
+
+
+#create an object and disply grade>>>>>>
+
+s1 = Student("Anjali", 85)
+s2 = Student("suhani", 60)
+
+print(s1.name, "Grade:", s1.grade())
+print(s2.name, "Grade:", s2.grade())
+
+
+#bank account class with private balamce>>>>>.
+
+class BankAccount:
+    def _init_(self):
+        self.__balance = 0
+
+    def deposit(self, amount):
+        self.__balance += amount
+        print("Balance after deposit:", self.__balance)
+
+    def withdraw(self, amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+            print("Balance after withdraw:", self.__balance)
+        else:
+            print("Insufficient balance")
+
+
+account = BankAccount()
+
+account.deposit(5000)
+account.withdraw(2000)
+
+
+
+# division with exception handling>>>>>
+
+try:
+    a = int(input("Enter first number: "))
+    b = int(input("Enter second number: "))
+
+    result = a / b
+    print("Result:", result)
+
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+except ValueError:
+    print("Invalid input")
+
+
+#file>>>>>
+
+file = open("student.txt", "w")
+
+file.write("Name: Anjali\n")
+file.write("Marks: 85")
+
+file.close()
+
+
+file = open("student.txt", "r")
+
+data = file.read()
+
+print(data)
+
+file.close()
+
+
+#read........
+
+try:
+    file = open("numbers.txt", "r")
+
+    numbers = file.readlines()
+
+    total = 0
+
+    for i in numbers:
+        total = total + int(i)
+
+    average = total / len(numbers)
+
+    print("Total:", total)
+    print("Average:", average)
+
+    file.close()
+
+except FileNotFoundError:
+    print("File does not exist")
